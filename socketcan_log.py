@@ -12,14 +12,14 @@ Potential example file (not exclusive):
 import can
 import sys
 
-filename = sys.argv[1].removesuffix(".log") if len(sys.argv) == 2 else "test"
+filename = sys.argv[1] if len(sys.argv) == 2 else "test.log"
 
-bus = can.LogReader(filename + ".log")
+bus = can.LogReader(filename)
 
-with open(filename + ".asc", "w") as f_out:
+with open(filename.removesuffix(".log") + ".asc", "w") as f_out:
     log_out = can.io.ASCWriter(f_out)
     for i in bus:
+        # if i.channel != "can1":
+        #     continue
         log_out.on_message_received(i)
-        # if i.channel == "can1":
-        #     log_out.on_message_received(i)
 
