@@ -12,12 +12,20 @@ Input: Command line argument with file name (.htm)
 
 Output: .asc file with the same Can Frames and relative times
 
+If you get a ValueError("Frames not in order."), you can comment anything with time out and and replace rel_time with idx in the can Message creation. This could be a issue with the time parsing.
+
 > Tiny unrelated Tip: If you want to capture a non OBD-Port accesible can-bus, with a Tatrix Openport, and get errors about the Voltage, Plug into OBD, open connection, then unplug and do CAN-monitoring
 
-# socketcan_log.py
+## socketcan_log.py
 
 For logs created with the candump utility of Socketcan Tools.
 
 Input: Command line argument with file name (.log)
 
 Output: .asc file with the same Can Frames and relative times
+
+If you have more than one CAN-Bus in the dump, you should uncomment the can checker if.
+
+## Example source files
+
+At the top of each file you can find some shotened example files, done by me at the time of creation. These don't necesarily mean this is the only compatible fileformat.
